@@ -1,0 +1,43 @@
+data:
+  human_hr_dir: "./data/human/train/raw"
+  scale: 4
+  image_format: "auto"
+  image_size: null
+
+training:
+  epochs: 200
+  batch_size: 8
+  lr: 1.0e-4
+  num_workers: 0
+  seed: 42
+  cond_drop_prob: 0.1
+  save_interval: 20
+  grad_clip: 1.0
+  val_preview_count: 8
+  ema_decay: 0.999
+  condition_id: 2
+  multi_condition_states: true
+
+diffusion:
+  timesteps: 1000
+  sampling_steps: 50
+  beta_schedule: "linear"
+  objective: "eps"
+  x0_loss_weight: 0.5
+  recon_loss_weight: 0.5
+  gradient_loss_weight: 0.05
+  low_t_prob: 0.7
+  low_t_max_fraction: 0.35
+
+model:
+  in_channels: 1
+  base_channels: 64
+  channel_mults: [1, 2, 4]
+  num_res_blocks: 2
+  time_dim: 256
+  scale_dim: 32
+
+output:
+  checkpoint_dir: "./experiments/steered_diffusion/x4/checkpoints"
+  log_dir: "./experiments/steered_diffusion/x4/logs"
+  preview_dir: "./experiments/steered_diffusion/x4/previews"
