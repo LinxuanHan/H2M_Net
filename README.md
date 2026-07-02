@@ -1,4 +1,4 @@
-# Zero-shot Cross-species Steered Diffusion Model for Mouse $^{129}\text{Xe}$ Lung MRI Super-resolution
+# Zero-shot Cross-species Steered Diffusion Model for Mouse Xenon-129 Lung MRI Super-resolution
 
 This project trains a human-prior conditional diffusion model on 2D human `129Xe` lung MR slices and performs zero-shot mouse super-resolution inference.
 
