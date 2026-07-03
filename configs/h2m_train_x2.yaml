@@ -1,0 +1,40 @@
+data:
+  human_hr_dir: "./data/human/train/raw"
+  scale: 2
+
+training:
+  epochs: 500
+  batch_size: 8
+  lr: 1.0e-4
+  num_workers: 4
+  seed: 42
+  cond_drop_prob: 0.1
+  save_interval: 50
+  grad_clip: 1.0
+  ema_decay: 0.999
+  elastic_alpha: 0.08
+  elastic_grid_size: 6
+  lambda_follower: 1.0
+  lambda_corrector: 1.0
+
+diffusion:
+  timesteps: 1000
+  sampling_steps: 50
+  degradation_mode: "bicubic"
+  x0_loss_weight: 0.5
+  gradient_loss_weight: 0.05
+  low_t_prob: 0.7
+  low_t_max_fraction: 0.35
+
+model:
+  in_channels: 1
+  base_channels: 64
+  channel_mults: [1, 2, 4]
+  num_res_blocks: 2
+  time_dim: 256
+  scale_dim: 32
+
+output:
+  checkpoint_dir: "./experiments/h2m_net/x2/checkpoints"
+  log_dir: "./experiments/h2m_net/x2/logs"
+  preview_dir: "./experiments/h2m_net/x2/previews"

@@ -1,0 +1,38 @@
+seed: 42
+
+data:
+  mouse_lr_x2_dir: "./data/mouse/test/down_2x_bilinear"
+  mouse_hr_x2_dir: "./data/mouse/test/raw"
+  mouse_lr_x4_dir: "./data/mouse/test/down_4x_bilinear"
+  mouse_hr_x4_dir: "./data/mouse/test/raw"
+  mouse_mask_dir: null
+
+inference:
+  scale: 2
+  checkpoint_x2: "./experiments/h2m_net/x2/checkpoints/best_x2.pt"
+  checkpoint_x4: "./experiments/h2m_net/x4/checkpoints/best_x4.pt"
+  sampling_steps: 50
+  omega: 1.0
+  tau: 0.1
+  gamma: 0.02
+  noise_strength: 0.2
+  init_mode: "lr_noise"
+
+evaluation:
+  use_mask: true
+
+diffusion:
+  timesteps: 1000
+  degradation_mode: "bicubic"
+
+model:
+  in_channels: 1
+  base_channels: 64
+  channel_mults: [1, 2, 4]
+  num_res_blocks: 2
+  time_dim: 256
+  scale_dim: 32
+
+output:
+  sr_dir: "./experiments/h2m_net/results"
+  metric_dir: "./experiments/h2m_net/metrics"
